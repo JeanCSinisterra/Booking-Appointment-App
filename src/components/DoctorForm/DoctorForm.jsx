@@ -3,16 +3,12 @@ import { Button, Col, Form, Input, Row, TimePicker} from "antd";
 import moment from "moment";
 
 const DoctorForm = ({ onFinish, initialValues }) => {
-  const fromTime = moment(initialValues.fromTime, "h:mm A");
-  const toTime = moment(initialValues.toTime, "h:mm A");
-  console.log("fromTime", fromTime);
-  console.log("toTime", toTime);
   return (
     <Form layout="vertical" onFinish={onFinish} initialValues={{
       ...initialValues,
       ...(initialValues && {
-        fromTime,
-        toTime
+        fromTime: moment.utc(initialValues.fromTime, "HH:mm"),
+        toTime: moment.utc(initialValues.toTime, "HH:mm"),
       })
     }}>
       <h4 className="card-title mt-3">Personal Information</h4>

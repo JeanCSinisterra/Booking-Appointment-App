@@ -24,8 +24,8 @@ const Profile = () => {
                 {
                     ...values,
                     userId: user._id,
-                    fromTime: moment(values.fromTime, "h:mm A"),
-                    toTime: moment(values.toTime, "h:mm A")
+                    fromTime: moment.utc(values.fromTime, "h:mm A"),
+                    toTime: moment.utc(values.toTime, "h:mm A")
                 },
                 {
                     headers: {

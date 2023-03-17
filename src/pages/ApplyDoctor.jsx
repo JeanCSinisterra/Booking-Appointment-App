@@ -16,10 +16,6 @@ const ApplyDoctor = () => {
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
-      const fromTime = moment(values.fromTime, "h:mm A");
-      const toTime = moment(values.toTime, "h:mm A");
-      console.log("fromTime", fromTime);
-      console.log("toTime", toTime);
       const response = await axios.post(
         "/api/user/apply-doctor-account",
         {
@@ -27,8 +23,8 @@ const ApplyDoctor = () => {
           ...values,
           userId: user._id,
           // FromTime-ToTime only store the time values
-          fromTime,
-          toTime,
+          fromTime: moment.utc(values.fromTime, "h:mm A"),
+          toTime: moment.utc(values.toTime, "h:mm A")
         },
         {
           headers: {
