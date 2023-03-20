@@ -46,7 +46,7 @@ const Profile = () => {
         }
     }
 
-    // Route to get rendered the Doctor Info
+    // Function to get rendered the Doctor Info in the layout
     const getDoctorData = async () => {
         try {
             dispatch(showLoading());
