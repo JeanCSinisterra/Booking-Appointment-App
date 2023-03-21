@@ -5,7 +5,7 @@ import { showLoading, hideLoading } from "../../redux/alertsSlice";
 import axios from "axios";
 import { Table } from "antd";
 import { toast } from "react-hot-toast";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const Appointments = () => {
     const [appointments, setAppointments] = useState([]);
@@ -64,7 +64,7 @@ const Appointments = () => {
             dataIndex: "createdAt",
             render: (text, record) => (
                 <span className="normal-text">
-                    {moment(record.date).format("DD-MM-YYYY")} {moment(record.time).format("h:mm A")}
+                    {dayjs(record.date).format("DD-MM-YYYY")} {dayjs(record.time).format("h:mm A")}
                 </span>
             )
         },

@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
-import moment from "moment";
+import dayjs from "dayjs";
 import DoctorForm from "../components/DoctorForm/DoctorForm"
 
 const ApplyDoctor = () => {
@@ -23,8 +23,8 @@ const ApplyDoctor = () => {
           ...values,
           userId: user._id,
           // FromTime-ToTime only store the time values
-          fromTime: moment.utc(values.fromTime, "h:mm A"),
-          toTime: moment.utc(values.toTime, "h:mm A")
+          fromTime: dayjs(values.fromTime).format("h:mm A"),
+          toTime: dayjs(values.toTime).format("h:mm A")
         },
         {
           headers: {

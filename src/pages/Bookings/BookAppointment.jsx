@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { hideLoading, showLoading } from "../../redux/alertsSlice";
 import { Col, DatePicker, Row, TimePicker, Button } from "antd";
-import moment from "moment";
+import dayjs from "dayjs";
 import { toast } from "react-hot-toast";
 
 const BookAppointment = () => {
@@ -125,14 +125,14 @@ const BookAppointment = () => {
                   format="DD-MM-YYYY"
                   onChange={(value) => {
                     setIsAvailable(false);
-                    setDate(moment(value).format("DD-MM-YYYY"))
+                    setDate(dayjs(value).format("DD-MM-YYYY"))
                   }} />
                 <TimePicker
                   format="h:mm A"
                   className="mt-3"
                   onChange={(value) => {
                     setIsAvailable(false);
-                    setTime(moment(value).format("h:mm A"));
+                    setTime(dayjs(value).format("h:mm A"));
                   }}
                 />
                 <Button className="primary-button mt-3 full-width-button" onClick={checkAvailability}>

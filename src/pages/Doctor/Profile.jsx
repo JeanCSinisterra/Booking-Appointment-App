@@ -6,7 +6,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/alertsSlice";
 import DoctorForm from "../../components/DoctorForm/DoctorForm";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const Profile = () => {
     const [doctor, setDoctor] = useState(null);
@@ -24,8 +24,8 @@ const Profile = () => {
                 {
                     ...values,
                     userId: user._id,
-                    fromTime: moment.utc(values.fromTime, "h:mm A"),
-                    toTime: moment.utc(values.toTime, "h:mm A")
+                    fromTime: dayjs(values.fromTime).format("h:mm A"),
+                    toTime: dayjs(values.toTime).format("h:mm A")
                 },
                 {
                     headers: {

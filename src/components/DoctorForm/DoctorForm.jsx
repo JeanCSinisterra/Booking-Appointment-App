@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button, Col, Form, Input, Row, TimePicker} from "antd";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const DoctorForm = ({ onFinish, initialValues }) => {
   return (
     <Form layout="vertical" onFinish={onFinish} initialValues={{
       ...initialValues,
       ...(initialValues && {
-        fromTime: moment.utc(initialValues.fromTime, "HH:mm"),
-        toTime: moment.utc(initialValues.toTime, "HH:mm"),
+        fromTime: dayjs(initialValues.fromTime, "HH:mm"),
+        toTime: dayjs(initialValues.toTime, "HH:mm"),
       })
     }}>
       <h4 className="card-title mt-3">Personal Information</h4>
