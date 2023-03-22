@@ -7,8 +7,8 @@ const DoctorForm = ({ onFinish, initialValues }) => {
     <Form layout="vertical" onFinish={onFinish} initialValues={{
       ...initialValues,
       ...(initialValues && {
-        fromTime: dayjs(initialValues.fromTime).toDate(),
-        toTime: dayjs(initialValues.toTime).toDate()
+        fromTime: dayjs(initialValues.fromTime).format('HH:mm'),
+        toTime: dayjs(initialValues.toTime).format('HH:mm')
       })
     }}>
       <h4 className="card-title mt-3">Personal Information</h4>

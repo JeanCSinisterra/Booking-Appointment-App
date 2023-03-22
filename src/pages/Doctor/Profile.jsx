@@ -10,6 +10,8 @@ import dayjs from "dayjs";
 
 const Profile = () => {
     const [doctor, setDoctor] = useState(null);
+    // eslint-disable-next-line
+    const [isLoading, setIsLoading] = useState(true); // Add a loading state
     const params = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -24,8 +26,8 @@ const Profile = () => {
                 {
                     ...values,
                     userId: user._id,
-                    fromTime: dayjs(values.fromTime).toDate(),
-                    toTime: dayjs(values.toTime).toDate()
+                    fromTime: dayjs(values.fromTime).format('HH:mm'),
+                    toTime: dayjs(values.toTime).format('HH:mm')
                 },
                 {
                     headers: {
@@ -63,11 +65,13 @@ const Profile = () => {
             );
             dispatch(hideLoading());
             if (response.data.success) {
-                setDoctor(response.data.data)
+                setDoctor(response.data.data);
+                setIsLoading(false); // Set loading to false when the data is fetched
             }
         } catch (error) {
             console.log(error);
             dispatch(hideLoading());
+            setIsLoading(false); // Set loading to false even if an error occurs
         }
     };
     
