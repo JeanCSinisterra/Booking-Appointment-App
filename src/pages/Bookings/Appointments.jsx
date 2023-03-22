@@ -64,7 +64,7 @@ const Appointments = () => {
             dataIndex: "createdAt",
             render: (text, record) => (
                 <span className="normal-text">
-                    {dayjs(record.date).format("DD-MM-YYYY")} {dayjs(record.time).format("h:mm A")}
+                    {dayjs(record.date).format("DD-MM-YYYY")} {dayjs(record.time).format("HH:mm")}
                 </span>
             )
         },

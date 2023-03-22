@@ -16,6 +16,7 @@ const ApplyDoctor = () => {
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
+
       const response = await axios.post(
         "/api/user/apply-doctor-account",
         {
@@ -23,8 +24,8 @@ const ApplyDoctor = () => {
           ...values,
           userId: user._id,
           // FromTime-ToTime only store the time values
-          fromTime: dayjs(values.fromTime).format("h:mm A"),
-          toTime: dayjs(values.toTime).format("h:mm A")
+          fromTime: dayjs(values.fromTime).toDate(),
+          toTime: dayjs(values.toTime).toDate()
         },
         {
           headers: {

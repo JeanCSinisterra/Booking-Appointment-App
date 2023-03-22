@@ -128,11 +128,11 @@ const BookAppointment = () => {
                     setDate(dayjs(value).format("DD-MM-YYYY"))
                   }} />
                 <TimePicker
-                  format="h:mm A"
+                  format="HH:mm"
                   className="mt-3"
                   onChange={(value) => {
                     setIsAvailable(false);
-                    setTime(dayjs(value).format("h:mm A"));
+                    setTime(dayjs(value).format("HH:mm"));
                   }}
                 />
                 <Button className="primary-button mt-3 full-width-button" onClick={checkAvailability}>

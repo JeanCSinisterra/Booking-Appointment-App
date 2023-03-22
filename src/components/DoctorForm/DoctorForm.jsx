@@ -7,8 +7,8 @@ const DoctorForm = ({ onFinish, initialValues }) => {
     <Form layout="vertical" onFinish={onFinish} initialValues={{
       ...initialValues,
       ...(initialValues && {
-        fromTime: dayjs(initialValues.fromTime, "HH:mm"),
-        toTime: dayjs(initialValues.toTime, "HH:mm"),
+        fromTime: dayjs(initialValues.fromTime).toDate(),
+        toTime: dayjs(initialValues.toTime).toDate()
       })
     }}>
       <h4 className="card-title mt-3">Personal Information</h4>
@@ -105,7 +105,7 @@ const DoctorForm = ({ onFinish, initialValues }) => {
             name="fromTime"
             rules={[{ required: true }]}
           >
-            <TimePicker format="h:mm A" />
+            <TimePicker format="HH:mm" />
           </Form.Item>
         </Col>
         {/* Schedule - toTime */}
@@ -116,7 +116,7 @@ const DoctorForm = ({ onFinish, initialValues }) => {
             name="toTime"
             rules={[{ required: true }]}
           >
-            <TimePicker format="h:mm A" />
+            <TimePicker format="HH:mm" />
           </Form.Item>
         </Col>
       </Row>
