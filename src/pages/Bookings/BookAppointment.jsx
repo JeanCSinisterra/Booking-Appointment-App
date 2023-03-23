@@ -93,7 +93,11 @@ const BookAppointment = () => {
       );
       dispatch(hideLoading());
       if (response.data.success) {
-        toast.success(response.data.message)
+        toast.success(response.data.message);
+        setIsAvailable(true);
+      } else {
+        toast.error(response.data.message);
+        setIsAvailable(false);
       }
     } catch (error) {
       toast.error("Error booking your appointment")

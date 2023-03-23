@@ -24,8 +24,8 @@ const ApplyDoctor = () => {
           ...values,
           userId: user._id,
           // FromTime-ToTime only store the time values in HH:mm format
-          fromTime: dayjs(values.fromTime).format('HH:mm'),
-          toTime: dayjs(values.toTime).format('HH:mm')
+          fromTime: dayjs(values.fromTime).format("HH:mm"),
+          toTime: dayjs(values.toTime).format("HH:mm")
         },
         {
           headers: {

@@ -10,8 +10,6 @@ import dayjs from "dayjs";
 
 const Profile = () => {
     const [doctor, setDoctor] = useState(null);
-    // eslint-disable-next-line
-    const [isLoading, setIsLoading] = useState(true); // Add a loading state
     const params = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -66,12 +64,10 @@ const Profile = () => {
             dispatch(hideLoading());
             if (response.data.success) {
                 setDoctor(response.data.data);
-                setIsLoading(false); // Set loading to false when the data is fetched
             }
         } catch (error) {
             console.log(error);
             dispatch(hideLoading());
-            setIsLoading(false); // Set loading to false even if an error occurs
         }
     };
     
