@@ -15,6 +15,7 @@ import Userlist from "./pages/Admin/Userlist.jsx";
 import Profile from "./pages/Doctor/Profile.jsx";
 import BookAppointment from "./pages/Bookings/BookAppointment.jsx";
 import Appointments from "./pages/Bookings/Appointments.jsx";
+import DoctorAppointments from "./pages/Doctor/DoctorAppointment.jsx";
 
 
 function App() {
@@ -73,6 +74,12 @@ function App() {
             element={
               <ProtectedRoute>
                 <Appointments />
+              </ProtectedRoute>} />
+          <Route
+            path="/doctor/appointments"
+            element={
+              <ProtectedRoute>
+                <DoctorAppointments />
               </ProtectedRoute>} />
         </Routes>
       </BrowserRouter>

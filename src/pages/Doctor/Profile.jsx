@@ -16,16 +16,16 @@ const Profile = () => {
     const { user } = useSelector((state) => state.user)
 
     // Function to update doctor profile
-    const onFinish = async (values) => {
+    const onFinish = async (initialValues) => {
         try {
             dispatch(showLoading());
             const response = await axios.post(
                 "/api/doctor/update-doctor-profile",
                 {
-                    ...values,
+                    ...initialValues,
                     userId: user._id,
-                    fromTime: dayjs(values.fromTime).format('HH:mm'),
-                    toTime: dayjs(values.toTime).format('HH:mm')
+                    fromTime: dayjs(initialValues.fromTime).format('HH:mm'),
+                    toTime: dayjs(initialValues.toTime).format('HH:mm')
                 },
                 {
                     headers: {
