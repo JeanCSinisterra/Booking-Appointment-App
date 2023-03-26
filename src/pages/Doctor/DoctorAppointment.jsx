@@ -30,6 +30,26 @@ const DoctorAppointments = () => {
         }
     }
 
+    const changeAppointmentStatus = async (record, status) => {
+        try {
+            dispatch(showLoading())
+            const response = await axios.post("/api/doctor/change-appointment-status", { appointmentId: record._id,  status: status }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            dispatch(hideLoading())
+            if (response.data.success) {
+                toast.success(response.data.message);
+                getAppointmentsData();
+            }
+        }
+        catch (error) {
+            toast.error("Error changing Doctor account status");
+            dispatch(hideLoading());
+        }
+    }
+
     const columns = [
         {
             title: "Id",
@@ -66,6 +86,20 @@ const DoctorAppointments = () => {
             title: "Status",
             dataIndex: "status"
         },
+        {
+            title: "Actions",
+            dataIndex: "actions",
+            render: (text, record) => (
+                <div className="d-flex">
+                    {record.status === "pending" && (
+                        <div className="d-flex">
+                        <h1 className="anchor px-2" onClick={() => changeAppointmentStatus(record, "approved")}>Approve</h1>
+                        <h1 className="anchor" onClick={() => changeAppointmentStatus(record, "rejected")}>Reject</h1>
+                    </div>
+                    )}
+                </div>
+            )
+        }
     ]
 
     useEffect(() => {

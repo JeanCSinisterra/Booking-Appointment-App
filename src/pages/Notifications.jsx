@@ -104,28 +104,28 @@ const Notifications = () => {
     <Layout>
        <h2>Notifications</h2>
       <Tabs>
-        <tabItems tab="Unseen" key={0}>
+        <tabitems tab="Unseen" key={0}>
           <div className="d-flex justify-content-end">
             <h3 className="anchor" onClick={ () => markAllAsRead() }>Mark all as read</h3>
           </div>
 
           {user?.unseenNotifications.map((notification) => (
-            <div className="card p-2" onClick={ () => navigate (notification.onClickPath) }>
+            <div className="card p-2 mt-2" onClick={ () => navigate (notification.onClickPath) }>
               <div className="card-text">{notification.message}</div>
             </div>
           ))}
 
-        </tabItems>
-        <tabItems tab="Seen" key={1}>
+        </tabitems>
+        <tabitems tab="Seen" key={1}>
           <div className="d-flex justify-content-end">
             <h3 className="anchor" onClick={() => deleteAll()}>Delete all</h3>
           </div>
           {user?.seenNotifications.map((notification) => (
-            <div className="card p-2" onClick={() => navigate(notification.onClickPath)}>
+            <div className="card p-2 mt-2" onClick={() => navigate(notification.onClickPath)}>
               <div className="card-text">{notification.message}</div>
             </div>
           ))}
-        </tabItems>
+        </tabitems>
       </Tabs>
     </Layout>
   );
