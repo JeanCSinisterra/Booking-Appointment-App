@@ -58,7 +58,7 @@ function App() {
                 <Userlist/>
               </ProtectedRoute>} />
           <Route 
-            path="/doctor/profile/:doctorId"
+            path="/doctor/profile/:userId"
             element={
               <ProtectedRoute>
                 <Profile />
