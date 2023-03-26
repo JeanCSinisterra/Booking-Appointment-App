@@ -30,12 +30,6 @@ const Appointments = () => {
         }
     } 
 
-    useEffect(() => {
-        getAppointmentsData()
-        // eslint-disable-next-line
-    }, [])
-
-
     const columns = [
         {
             title: "Id",
@@ -65,14 +59,18 @@ const Appointments = () => {
             render: (text, record) => (
                 <span className="normal-text">
                     {dayjs(record.date).format("DD-MM-YYYY")} {dayjs(record.time).format("HH:mm")}
-                </span>
-            )
+                </span>)
         },
         {
-            title: "status",
-            dataIndex: "status"
-        },
-    ]
+            title: "Status",
+            dataIndex: "status",
+        }
+        ]
+    
+    useEffect(() => {
+        getAppointmentsData()
+        // eslint-disable-next-line
+    }, [])
 
   return (
       <Layout>

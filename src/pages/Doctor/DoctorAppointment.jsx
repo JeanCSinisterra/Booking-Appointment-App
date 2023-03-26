@@ -69,7 +69,7 @@ const DoctorAppointments = () => {
             )
         },
         {
-            title: "status",
+            title: "Status",
             dataIndex: "status"
         },
     ]

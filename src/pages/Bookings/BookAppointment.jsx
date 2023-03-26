@@ -10,13 +10,12 @@ import { toast } from "react-hot-toast";
 
 const BookAppointment = () => {
   const { user } = useSelector((state) => state.user);
-  // eslint-disable-next-line
   const [isAvailable, setIsAvailable] = useState(false);
   const [date, setDate] = useState();
   const [time, setTime] = useState();
+  const [doctor, setDoctor] = useState(null);
   const params = useParams();
   const dispatch = useDispatch();
-  const [doctor, setDoctor] = useState(null);
 
   // Function to get rendered the Doctor Info
   const getDoctorData = async () => {
@@ -44,8 +43,8 @@ const BookAppointment = () => {
   };
 
   // Function to Book appointment directly from the Button "Book Now"
-  const bookNow = async () => {
-    setImmediate(false);
+  const bookNow = async (value) => {
+    setTimeout(() => setIsAvailable(false), 0);
     try {
       dispatch(showLoading());
       const response = await axios.post(
@@ -55,8 +54,8 @@ const BookAppointment = () => {
           userId: user._id,
           doctorInfo: doctor,
           userInfo: user,
-          date: date,
-          time: time
+          date: dayjs(value.date).format("DD-MM-YYYY"),
+          time: dayjs(value.time).format("HH:mm")
         },
         {
           headers: {
@@ -75,7 +74,7 @@ const BookAppointment = () => {
   };
 
   // Function to check the availability of appointment
-  const checkAvailability = async () => {
+  const checkAvailability = async (value) => {
     try {
       dispatch(showLoading());
       const response = await axios.post(
