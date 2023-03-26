@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/alertsSlice";
 import axios from "axios";
 import { Table } from "antd";
+import dayjs from "dayjs";
 
 
 const Userlist = () => {
@@ -44,7 +45,8 @@ const Userlist = () => {
         },
         {
             title: "Created At",
-            dataIndex: "createdAt"
+            dataIndex: "createdAt",
+            render: (record, text) => dayjs(record.createdAt).format("DD-MM-YYYY")
         },
         {
             title: "Actions",

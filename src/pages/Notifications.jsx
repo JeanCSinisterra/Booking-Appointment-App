@@ -81,7 +81,7 @@ const Notifications = () => {
       ),
       content: user?.unseenNotifications.map((notification) => (
         <div
-          className="card p-2"
+          className="card p-2 mt-2"
           onClick={() => navigate(notification.onClickPath)}
         >
           <div className="card-text">{notification.message}</div>
@@ -104,7 +104,7 @@ const Notifications = () => {
     <Layout>
        <h2>Notifications</h2>
       <Tabs>
-        <tabitems tab="Unseen" key={0}>
+        <tabItems tab="Unseen" key={0}>
           <div className="d-flex justify-content-end">
             <h3 className="anchor" onClick={ () => markAllAsRead() }>Mark all as read</h3>
           </div>
@@ -115,8 +115,8 @@ const Notifications = () => {
             </div>
           ))}
 
-        </tabitems>
-        <tabitems tab="Seen" key={1}>
+         </tabItems>
+        <tabItems tab="Seen" key={1}>
           <div className="d-flex justify-content-end">
             <h3 className="anchor" onClick={() => deleteAll()}>Delete all</h3>
           </div>
@@ -125,7 +125,7 @@ const Notifications = () => {
               <div className="card-text">{notification.message}</div>
             </div>
           ))}
-        </tabitems>
+        </tabItems>
       </Tabs>
     </Layout>
   );

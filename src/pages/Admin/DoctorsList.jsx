@@ -5,6 +5,7 @@ import { showLoading, hideLoading } from "../../redux/alertsSlice";
 import axios from "axios";
 import { Table } from "antd";
 import { toast } from "react-hot-toast";
+import dayjs from "dayjs";
 
 const DoctorList = () => {
     // eslint-disable-next-line
@@ -67,7 +68,8 @@ const DoctorList = () => {
         },
         {
             title: "Created At",
-            dataIndex: "createdAt"
+            dataIndex: "createdAt",
+            render: (record, text) => dayjs(record.createdAt).format("DD-MM-YYYY")
         },
         {
             title: "status",
