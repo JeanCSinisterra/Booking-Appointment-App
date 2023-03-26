@@ -74,7 +74,7 @@ const BookAppointment = () => {
   };
 
   // Function to check the availability of appointment
-  const checkAvailability = async (value) => {
+  const checkAvailability = async () => {
     try {
       dispatch(showLoading());
       const response = await axios.post(

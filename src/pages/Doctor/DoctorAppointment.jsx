@@ -18,7 +18,7 @@ const DoctorAppointments = () => {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
-            })
+            });
             dispatch(hideLoading())
             if (response.data.success) {
                 setAppointments(response.data.data)
@@ -30,12 +30,6 @@ const DoctorAppointments = () => {
         }
     }
 
-    useEffect(() => {
-        getAppointmentsData()
-        // eslint-disable-next-line
-    }, [])
-
-
     const columns = [
         {
             title: "Id",
@@ -46,7 +40,7 @@ const DoctorAppointments = () => {
             dataIndex: "name",
             render: (text, record) => (
                 <span className="normal-text">
-                    {record.userInfo.Name}
+                    {record.userInfo.name}
                 </span>
             )
         },
@@ -73,6 +67,11 @@ const DoctorAppointments = () => {
             dataIndex: "status"
         },
     ]
+
+    useEffect(() => {
+        getAppointmentsData()
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <Layout>
