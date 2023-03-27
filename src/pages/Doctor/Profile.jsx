@@ -24,8 +24,8 @@ const Profile = () => {
                 {
                     ...values,
                     userId: user._id,
-                    fromTime: dayjs(values.fromTime).format('HH:mm'),
-                    toTime: dayjs(values.toTime).format('HH:mm')
+                    fromTime: dayjs(values.fromTime).format("HH:mm"),
+                    toTime: dayjs(values.toTime).format("HH:mm")
                 },
                 {
                     headers: {
