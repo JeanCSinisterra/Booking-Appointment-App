@@ -54,8 +54,8 @@ const BookAppointment = () => {
           userId: user._id,
           doctorInfo: doctor,
           userInfo: user,
-          date: dayjs(value.date).format("DD-MM-YYYY"),
-          time: dayjs(value.time).format("HH:mm")
+          date: date,
+          time: time
         },
         {
           headers: {
