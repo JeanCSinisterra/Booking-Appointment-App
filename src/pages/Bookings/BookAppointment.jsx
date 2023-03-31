@@ -43,7 +43,7 @@ const BookAppointment = () => {
   };
 
   // Function to Book appointment directly from the Button "Book Now"
-  const bookNow = async (value) => {
+  const bookNow = async () => {
     setTimeout(() => setIsAvailable(false), 0);
     try {
       dispatch(showLoading());
