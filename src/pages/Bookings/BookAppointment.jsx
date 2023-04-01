@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { hideLoading, showLoading } from "../../redux/alertsSlice";
@@ -15,6 +15,7 @@ const BookAppointment = () => {
   const [time, setTime] = useState();
   const [doctor, setDoctor] = useState(null);
   const params = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // Function to get rendered the Doctor Info
@@ -66,7 +67,8 @@ const BookAppointment = () => {
       dispatch(hideLoading());
       if (response.data.success) {
         console.log(time);
-        toast.success(response.data.message)
+        toast.success(response.data.message);
+        navigate("/appointments");
       }
     } catch (error) {
       toast.error("Error booking your appointment")
@@ -136,19 +138,24 @@ const BookAppointment = () => {
                   className="mt-3"
                   onChange={(value) => {
                     setIsAvailable(false);
-                    setTime(dayjs(value).format("HH:mm"));
+                    setTime(dayjs(value).format('HH:mm').toString());
                   }}
                 />
-                <Button className="primary-button mt-3 full-width-button" onClick={checkAvailability}>
+                {!isAvailable && <Button
+                  className="primary-button mt-3 full-width-button"
+                  onClick={checkAvailability}
+                >
                   Check Availability
-                </Button>
+                </Button>}
+
                 {isAvailable && (
-                  <Button className="secondary-button mt-3 full-width-button" onClick={bookNow}>
+                  <Button
+                    className="secondary-button mt-3 full-width-button"
+                    onClick={bookNow}
+                  >
                     Book Now
                   </Button>
-                )
-                }
-
+                )}
               </div>
             </Col>
           </Row>
