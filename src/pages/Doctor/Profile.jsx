@@ -81,7 +81,7 @@ const Profile = () => {
             <h3 className='page-title'>Doctor Profile</h3>
             <hr />
             {doctor && <DoctorForm onFinish={onFinish} initialValues={doctor} />}
-            {/* <DoctorForm onFinish={onFinish} initialValues={doctor} /> */}
+            
         </Layout>
     )
 }
