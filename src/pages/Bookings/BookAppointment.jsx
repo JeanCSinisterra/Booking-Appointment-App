@@ -55,8 +55,7 @@ const BookAppointment = () => {
           userId: user._id,
           doctorInfo: doctor,
           userInfo: user,
-          date: date,
-          time: time
+          dateTime: dayjs(`${date} ${time}`, 'DD-MM-YYYY HH:mm').toDate().toISOString()
         },
         {
           headers: {
@@ -71,15 +70,17 @@ const BookAppointment = () => {
         navigate("/appointments");
       }
     } catch (error) {
-      toast.error("Error booking your appointment")
+      toast.error("Error booking your appointment");
       dispatch(hideLoading());
     }
   };
+
 
   // Function to check the availability of appointment
   const checkAvailability = async () => {
     try {
       dispatch(showLoading());
+      console.log("Sending date and time:", date, time);
       const response = await axios.post(
         "/api/user/check-booking-availability",
         {
@@ -131,14 +132,14 @@ const BookAppointment = () => {
                   format="DD-MM-YYYY"
                   onChange={(value) => {
                     setIsAvailable(false);
-                    setDate(dayjs(value).format("DD-MM-YYYY"))
+                    setDate(dayjs(value).format("DD-MM-YYYY"));
                   }} />
                 <TimePicker
                   format="HH:mm"
                   className="mt-3"
                   onChange={(value) => {
                     setIsAvailable(false);
-                    setTime(dayjs(value).format('HH:mm').toString());
+                    setTime(value && value.format('HH:mm'));
                   }}
                 />
                 {!isAvailable && <Button
