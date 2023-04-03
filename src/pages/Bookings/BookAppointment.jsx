@@ -55,7 +55,7 @@ const BookAppointment = () => {
           userId: user._id,
           doctorInfo: doctor,
           userInfo: user,
-          dateTime: dayjs(`${date} ${time}`, 'DD-MM-YYYY HH:mm').toDate().toISOString()
+          dateTime: dayjs(`${date} ${time}`, "DD-MM-YYYY HH:mm").toDate().toISOString()
         },
         {
           headers: {
@@ -139,7 +139,7 @@ const BookAppointment = () => {
                   className="mt-3"
                   onChange={(value) => {
                     setIsAvailable(false);
-                    setTime(value && value.format('HH:mm'));
+                    setTime(value && value.format("HH:mm"));
                   }}
                 />
                 {!isAvailable && <Button
