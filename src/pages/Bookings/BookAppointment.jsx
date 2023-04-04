@@ -43,40 +43,8 @@ const BookAppointment = () => {
     }
   };
 
-  // Function to Book appointment directly from the Button "Book Now"
-  const bookNow = async () => {
-    setTimeout(() => setIsAvailable(false), 0);
-    try {
-      dispatch(showLoading());
-      const response = await axios.post(
-        "/api/user/book-appointment",
-        {
-          doctorId: params.doctorId,
-          userId: user._id,
-          doctorInfo: doctor,
-          userInfo: user,
-          dateTime: dayjs(`${date} ${time}`, "DD-MM-YYYY HH:mm").toDate().toISOString()
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      dispatch(hideLoading());
-      if (response.data.success) {
-        console.log(time);
-        toast.success(response.data.message);
-        navigate("/appointments");
-      }
-    } catch (error) {
-      toast.error("Error booking your appointment");
-      dispatch(hideLoading());
-    }
-  };
 
-
-  // Function to check the availability of appointment
+// Function to check the availability of appointment
   const checkAvailability = async () => {
     try {
       dispatch(showLoading());
@@ -104,6 +72,39 @@ const BookAppointment = () => {
       }
     } catch (error) {
       toast.error("Error booking your appointment")
+      dispatch(hideLoading());
+    }
+  };
+
+  // Function to Book appointment directly from the Button "Book Now"
+  const bookNow = async () => {
+    setTimeout(() => setIsAvailable(false), 0);
+    try {
+      dispatch(showLoading());
+      const response = await axios.post(
+        "/api/user/book-appointment",
+        {
+          doctorId: params.doctorId,
+          userId: user._id,
+          doctorInfo: doctor,
+          userInfo: user,
+          date: date,
+          time: time,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      dispatch(hideLoading());
+      if (response.data.success) {
+        console.log(time);
+        toast.success(response.data.message);
+        navigate("/appointments");
+      }
+    } catch (error) {
+      toast.error("Error booking your appointment");
       dispatch(hideLoading());
     }
   };
