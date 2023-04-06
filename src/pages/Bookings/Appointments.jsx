@@ -21,7 +21,14 @@ const Appointments = () => {
             })
             dispatch(hideLoading())
             if (response.data.success) {
-                setAppointments(response.data.data)
+                const mappedAppointments = response.data.data.map(appointment => {
+                    return {
+                        ...appointment,
+                        formattedDateTime: dayjs(`${appointment.date} ${appointment.time}`, "DD-MM-YYYY HH:mm").format("DD-MM-YYYY HH:mm"),
+                    };
+                });
+                console.log("Mapped Appointments:", mappedAppointments);
+                setAppointments(mappedAppointments);
             }
         }
         catch (error) {
@@ -55,10 +62,10 @@ const Appointments = () => {
         },
         {
             title: "Date & Time",
-            dataIndex: "createdAt",
-            render: (text, record) => (
+            dataIndex: "formattedDateTime",
+            render: (text) => (
                 <span className="normal-text">
-                    {dayjs(record.date).format("DD-MM-YYYY")} {dayjs(record.time).format("HH:mm")}
+                    {text}
                 </span>)
         },
         {
