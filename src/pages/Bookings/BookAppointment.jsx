@@ -44,7 +44,7 @@ const BookAppointment = () => {
   };
 
 
-// Function to check the availability of appointment
+  // Function to check the availability of appointment
   const checkAvailability = async () => {
     try {
       dispatch(showLoading());
@@ -122,10 +122,22 @@ const BookAppointment = () => {
             {doctor.firstName} {doctor.lastName}
           </h3>
           <hr />
-          <h4 className="normal-text">
+          <p className="normal-text">
             <b>Schedule: </b>
             {doctor.fromTime} - {doctor.toTime}
-          </h4>
+          </p>
+          <p className="normal-text">
+            <b>Phone Number: </b>
+            {doctor.phoneNumber}
+          </p>
+          <p className="normal-text">
+            <b>Address: </b>
+            {doctor.address}
+          </p>
+          <p className="normal-text">
+            <b>Fee per Visit: </b>
+            {doctor.feePerConsultation}
+          </p>
           <Row>
             <Col span={8} sm={24} xs={24} lg={8}>
               <div className="d-flex flex-column pt-2">
