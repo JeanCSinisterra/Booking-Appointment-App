@@ -61,6 +61,7 @@ const Userlist = () => {
     return (
         <Layout>
             <h2 className="page-header">Users</h2>
+            <hr />
             <Table columns={columns} dataSource={users}/>
         </Layout>
     )

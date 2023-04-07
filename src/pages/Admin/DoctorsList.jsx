@@ -90,6 +90,7 @@ const DoctorList = () => {
     return (
         <Layout>
             <h2 className="page-header">Doctors</h2>
+            <hr />
             <Table columns={columns} dataSource={doctors} />
         </Layout>
     )

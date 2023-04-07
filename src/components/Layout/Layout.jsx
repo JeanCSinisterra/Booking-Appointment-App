@@ -119,7 +119,7 @@ const Layout = ({ children }) => {
                                 <i className="ri-notification-3-line header-action-icon px-2 mr-2"></i>    
                             </Badge>
                             
-                            <Link to="/profile" className="anchor mx-2">{user?.name}</Link>
+                            <Link to="" className="anchor mx-2">{user?.name}</Link>
                         </div>
                     </div>
                     <div className="body">

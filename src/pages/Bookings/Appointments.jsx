@@ -82,6 +82,7 @@ const Appointments = () => {
   return (
       <Layout>
           <h2 className="page-header">Appointments</h2>
+          <hr />
           <Table columns={columns} dataSource={appointments} />
       </Layout>
   )
